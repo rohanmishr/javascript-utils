@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+        <style>
+            html{
+                background-color:gray;
+            }
+
+            .invButton{
+                width:75px;
+                height:75px;
+                margin-right:10px;
+            }
+
+            .invButton:hover{
+                border-color:orange;
+                border-width:5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id='main'>
+            <!--inventory is appended here-->
+        </div>
+    </body>
+    <script>
+        var inventory = [];
+        function item(name, property){
+            this.name = name.toString();
+            this.property = property.toString(); //can use parseInt to make an int value
+        }
+        var exampleItem = new item("Example Item", "property");
+        var exampleItem2 = new item("Example Item 2", "property");
+        
+        inventory.push(exampleItem);
+        inventory.push(exampleItem2);
+
+        function inventoryTick(){
+            $("#main").empty();
+            for(var i = 0; i<inventory.length; i++){
+                $("#main").append("<button class='invButton'>"+inventory[i].property+"</button>");
+            }
+        }
+        setInterval(function(){inventoryTick();},1)
+    </script>
+</html>
